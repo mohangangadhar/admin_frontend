@@ -1,6 +1,7 @@
 // CarrierDetails.js
 import React, { useState } from 'react';
-import './carrierdetails.css'
+import './carrierdetails.css';
+import { API_BASE_URL } from '../configure.js';
 
 const CarrierDetails = () => {
     const [carrierName, setCarrierName] = useState('');
@@ -14,7 +15,7 @@ const CarrierDetails = () => {
 
     const handleSaveCarrier = async () => {
         try {
-            const response = await fetch('http://localhost:5000/carrierdetails', {
+            const response = await fetch(`${ API_BASE_URL }/carrierdetails`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ const CarrierDetails = () => {
 
     const handleSaveClient = async () => {
         try {
-            const response = await fetch('http://localhost:5000/clientdetails', {
+            const response = await fetch(`${ API_BASE_URL }/clientdetails`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './clientcarriermapping.css'
+import { API_BASE_URL } from '../configure.js';
 
 const Mapping = () => {
   const [clients, setClients] = useState([]);
@@ -14,7 +15,7 @@ const Mapping = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/getClients');
+        const response = await fetch(`${ API_BASE_URL }/api/getClients`);
         const data = await response.json();
         setClients(data);
       } catch (error) {
@@ -24,7 +25,7 @@ const Mapping = () => {
 
     const fetchCarriers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/getCarriers');
+        const response = await fetch(`${ API_BASE_URL }/api/getCarriers`);
         const data = await response.json();
         setCarriers(data);
       } catch (error) {
@@ -58,7 +59,7 @@ const Mapping = () => {
 
   const handleSaveMapping = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/saveClientMapping1', {
+      const response = await fetch(`${ API_BASE_URL }/api/saveClientMapping1`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

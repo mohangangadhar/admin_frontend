@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './userclientmapping.css'
+import { API_BASE_URL } from '../configure.js';
 
 const UserMapping = () => {
   const [clients, setClients] = useState([]);
@@ -14,7 +15,7 @@ const UserMapping = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/getClients');
+        const response = await fetch(`${ API_BASE_URL }/api/getClients`);
         const data = await response.json();
         setClients(data);
       } catch (error) {
@@ -24,7 +25,7 @@ const UserMapping = () => {
 
     const fetchEmails = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/getEmails');
+        const response = await fetch(`${ API_BASE_URL }/api/getEmails`);
         const data = await response.json();
         setEmails(data);
       } catch (error) {
@@ -58,7 +59,7 @@ const UserMapping = () => {
 
   const handleSaveMapping = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/saveClientMapping2', {
+      const response = await fetch(`${ API_BASE_URL }/api/saveClientMapping2`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +85,7 @@ const UserMapping = () => {
 
   return (
     <div className='userclientmapping'>
-      <h2>user client mapping</h2>
+      <h2>User - Client Mapping</h2>
       <label htmlFor="clientSelect">Select Client:</label>
       <select className='form-control' id="clientSelect" value={selectedClient} onChange={handleClientChange}>
         <option value="">Select a client</option>
