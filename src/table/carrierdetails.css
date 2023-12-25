@@ -1,0 +1,44 @@
+.carrierdetails{
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #7738f6;
+    margin-top: 4%;
+    margin-left: 250px;
+    width: 210%;
+    margin-right:1%;
+   border: 1px solid grey;
+}
+.carrierdetails h1{
+    color: #7738f6;
+    text-align: center;
+}
+.carrierdetails input{
+margin-top: 1%;
+}
+.carrierdetails label{
+margin-top: 1%;
+}
+.clientdetails{
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #7738f6;
+    margin-top: 4%;
+    margin-left: 250px;
+    width: 210%;
+    margin-right:1%;
+   border: 1px solid grey;
+}
+.clientdetails h1{
+    color: #7738f6;
+    text-align: center;
+}
+.clientdetails input{
+margin-top: 1%;
+}
+.clientdetails textarea{
+    margin-top: 1%;
+    }
+.clientdetails label{
+margin-top: 1%;
+}
+

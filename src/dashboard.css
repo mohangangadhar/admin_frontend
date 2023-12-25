@@ -16,17 +16,17 @@
     justify-content: flex-start;
     align-items: center;
     display: flex;
-    width: 14rem;
+    width: 15rem;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    padding: 15px;
-    margin: 10px;
+    padding: 6%;
+    margin: 1%;
     background: #091322;
     border-radius:10px;
   }
   .group a{
-      margin-top: 25px;
+      margin-top: 15%;
       text-decoration: none;
       color: rgba(255, 255, 255, 0.903);
       font-size: 17px;
@@ -48,7 +48,7 @@
     margin-right: 10px;
 }
 .card {
-  margin-top: 450px;
+  margin-top: 50px;
   margin-left: 450px;
   margin-bottom: 25px;
   width: 800px;
@@ -82,57 +82,89 @@
   background-color: #7738f6;
   padding: 1rem;
     border-radius: 1rem;
-    margin-top: 11px;
+    margin-top: 1%;
     margin-left: 250px;
+    width: 150%;
 }
 .uploadfieldinside{
   display: flex;
 }
 .uploadfieldinside input{
-  margin-top: 15px;
-  margin-right: 5px;
-  margin-bottom: 10px;
+  margin-top: 2%;
+  margin-right: 1%;
+  margin-bottom: 1%;
 }
 .uploadfieldinside select{
-  margin-top: 15px;
-  margin-right: 5px;
-  margin-bottom: 10px;
+  margin-top: 2%;
+  margin-right: 1%;
+  margin-bottom: 1%;
 }
 .insidefile{
-  margin-top: 15px;
-  margin-right: 5px;
-  margin-bottom: 10px;
+  margin-top: 2%;
+  margin-right: 1%;
+  margin-bottom: 1%;
 }
 .uploadfield h4{
   color: #ebeff2;
 }
+
 .inside{
   display: flex;
   justify-content: end;
   
 }
 .inside .button{
-  padding: 8px;
-  width: 90px;
+  padding: 1%;
+  width: 9%;
   border: 1px solid #b2b2e6;
   background-color: #b2b2e6;
   color: #4547de;
   border-radius: 5px;
-  margin-right: 5px;
+  margin-right: 1%;
 }
 .tabletwo{
-  border: 1px solid white;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06), 0px 6px 18px rgba(0, 0, 0, 0.06);
-  margin-bottom: 25px;
- margin-top: 30px;
- background-color: white;
- padding: 15px;
- margin-left: 250px;
+    margin-bottom: 25px;
+   margin-top: 30px;
+   background-color: #7738f6;
+   padding: 15px;
+   border-radius: 1rem;
+   margin-right: 10px;
+   margin-left: 250px;
 }
-.tabletwo h3{
+.tabletwo table{
+  border-collapse: collapse;
+  border-radius: 1rem;
   background-color: white;
-  color: gray;
+  text-align: left;
+  margin-top: 25px;
+ 
+  th{
+    
+    background-color:#d0def2;
+    padding: 0.75rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+  td{
+    padding: 0.75rem;
+  }
+  tr:hover{
+    color: #7738f6;
+    background-color: #f3f8fe;
+  }
+  .delete{
+    border: 1px solid #ffcdd2;
+    background-color: #ffcdd2;
+    color: #c62828;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 2px;
+  }
 }
+
 .tabletwo .refresh{
   width: 5vw;
   border-radius:5px;
@@ -159,33 +191,9 @@
   color: #7738f6;
   padding: 5px;
 }
-.tabletwo .delete{
-  width: 5vw;
-  border-radius:5px;
-  border: 2px solid #7738f6;
-  background-color: #7738f6;
-  color: white;
-  padding: 5px;
-}
-.tabletwo p{
-  background-color: white;
-}
-.tabletwo button:hover{
-  background-color: white;
-  color: #7738f6;
-  border: 2px solid black;
- 
-}
-.table {
-  margin-top: 2rem;
-  border-radius: 1em;
-  overflow: hidden;
-}
-.tableone button:hover{
-  background-color: white;
-  color: orange;
-  border: 2px solid black;
-}
+
+
+
   .tableone{
     border: 1px solid white;
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06), 0px 6px 18px rgba(0, 0, 0, 0.06);
@@ -197,7 +205,7 @@
   }
   .tableone h3{
     background-color: white;
-    color: #109cf1;
+    color: #7738f6;
   }
   .tableone .refresh{
     width: 5vw;
@@ -223,11 +231,11 @@
     padding: 5px;
   }
   .tableone .soursubmit{
-    width: 5vw;
-    border-radius:5px;
-    border: 2px solid orange;
-    background-color: orange;
-    padding: 5px;
+    padding: 10px;
+  border: 1px solid #b2b2e6;
+  background-color: #b2b2e6;
+  color: #4547de;
+  border-radius: 5px;
   }
   .tableone p{
     background-color: white;
@@ -303,6 +311,7 @@
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06), 0px 6px 18px rgba(0, 0, 0, 0.06);
     margin-top: 30px;
     margin-left: 250px;
+    color: #7738f6;
   }
   .ratecarddconfig{
     display: flex;
@@ -318,15 +327,15 @@
     margin-top: 30px;
   }
   .rate-card-one button{
-    background-color: orange;
-    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #b2b2e6;
+    background-color: #b2b2e6;
     width: 90px;
     font-size: 30;
     font-weight: bold;
     margin-top: 30px;
     border-radius: 5px;
-    padding: 5px;
-    border: 2px solid orange;
+    padding: 10px;
+    color: #4547de;
   }
   .rate-card-two{
     border: 1px solid white;
@@ -339,16 +348,16 @@
     margin-top: 30px;
   }
   .rate-card-three button{
-    background-color: orange;
+    background-color: #b2b2e6;
     font-family: Arial, Helvetica, sans-serif;
     width: 90px;
     font-weight: bold;
     border-radius: 5px;
     padding: 5px;
-    border: 2px solid orange;
+    border: 1px solid #b2b2e6;
+    color: #4547de;
   }
   .ratecard{
-    margin-top: 10px;
     margin-left: 250px;
   }
   .ratecardd{
@@ -356,10 +365,14 @@
     margin-top: 30px;
     padding: 15px;
   }
+  .ratecardd h4{
+    color: #7738f6;
+  }
   .ratecardd button{
-    background-color: orange;
+    border: 1px solid #b2b2e6;
+    background-color: #b2b2e6;
     font-family: Arial, Helvetica, sans-serif;
-    border: 2px solid orange;
+    color: #4547de;
     font-size: 30;
     font-weight: bold;
     border-radius: 5px;
@@ -387,29 +400,34 @@
     margin-left: 25px;
   }
   .rate-card-five button{
-    background-color: orange;
+    border: 1px solid #b2b2e6;
+    background-color: #b2b2e6;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30;
     font-weight: bold;
     margin-left: 25px;
     border-radius: 5px;
     padding: 5px;
-    border: 2px solid orange;
+    
   }
   .rate-card-four button{
-    background-color: orange;
+    border: 1px solid #b2b2e6;
+    background-color: #b2b2e6;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30;
     font-weight: bold;
     margin-left: 25px;
     border-radius: 5px;
     padding: 5px;
-    border: 2px solid orange;
+
   }
   .submitted-table{
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06), 0px 6px 18px rgba(0, 0, 0, 0.06);
     margin-top: 30px;
     padding: 15px;
+  }
+  .submitted-table h4{
+    color: #7738f6;
   }
   .filelink{
     font-size: 10px;

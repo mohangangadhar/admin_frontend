@@ -11,6 +11,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { API_BASE_URL } from './configure.js';
 import TablePage from './modifyuser.js';
 import Access from "./accesssettings.js";
+import Createnewuser from "./createnewuser.js";
+import CarrierDetails from "./table/carrierdetails.js"
+import Mapping from "./table/clientcarriermapping.js"
+import Signup from "./table/signup.js"
+import UserMapping from "./table/userclientmapping.js"
 
 import CryptoJS from 'crypto-js';
 
@@ -53,6 +58,8 @@ function Dashboard() {
   const [newParameterName, setNewParameterName] = useState("");
   const [Showadduser,setShowadduser]=useState("");
   const [Showsettings,setShowsettings]=useState("");
+  const [Showcreatenewuser, setShowcreatenewuser] = useState("");
+  const [Shownewtables, setShownewtables] = useState("");
 
   const [matrix, setMatrix] = useState(createEmptyMatrix(0, 0));
 
@@ -175,6 +182,8 @@ function Dashboard() {
     setRateCard(false);
     setShowadduser(false);
     setShowsettings(false);
+    setShowcreatenewuser(false);
+    setShownewtables(false);
   };
 
   const toggleUserUploads = () => {
@@ -185,6 +194,8 @@ function Dashboard() {
     setRateCard(false);
     setShowadduser(false);
     setShowsettings(false);
+    setShowcreatenewuser(false);
+    setShownewtables(false);
   };
 
   const toggleUserMapping = () => {
@@ -195,6 +206,8 @@ function Dashboard() {
     setRateCard(false);
     setShowadduser(false);
     setShowsettings(false);
+    setShowcreatenewuser(false);
+    setShownewtables(false);
   };
 
   const toggleRateCardConfig = () => {
@@ -206,7 +219,8 @@ function Dashboard() {
     setRateCard(false);
     setShowadduser(false);
     setShowsettings(false);
-
+    setShowcreatenewuser(false);
+    setShownewtables(false);
   };
   const toggleRateCard = () => {
     setMapping(false);
@@ -216,6 +230,8 @@ function Dashboard() {
     setRateCard(true);
     setShowadduser(false);
     setShowsettings(false);
+    setShowcreatenewuser(false);
+    setShownewtables(false);
   };
 
   const toggleadduser = () => {
@@ -226,6 +242,8 @@ function Dashboard() {
     setRateCard(false);
     setShowadduser(true);
     setShowsettings(false);
+    setShowcreatenewuser(false);
+    setShownewtables(false);
   };
 
   const togglesettings = () => {
@@ -236,6 +254,31 @@ function Dashboard() {
     setRateCard(false);
     setShowadduser(false);
     setShowsettings(true);
+    setShowcreatenewuser(false);
+    setShownewtables(false);
+  }
+
+  const togglecreateuser = () => {
+    setMapping(false);
+    setShowFiles(false);
+    setShowUserProfile(false);
+    setRateCardConfig(false);
+    setRateCard(false);
+    setShowadduser(false);
+    setShowsettings(false);
+    setShowcreatenewuser(true);
+    setShownewtables(false);
+  }
+  const togglenewtables = () =>{
+    setMapping(false);
+    setShowFiles(false);
+    setShowUserProfile(false);
+    setRateCardConfig(false);
+    setRateCard(false);
+    setShowadduser(false);
+    setShowsettings(false);
+    setShowcreatenewuser(false);
+    setShownewtables(true);
   }
 
 
@@ -523,7 +566,7 @@ function Dashboard() {
                   <i class="bi bi-terminal-dash"></i> Profile
                   </a>
                 
-                  <a
+                  {/*<a
                     href="#"
                    
                     onClick={toggleadduser}
@@ -531,9 +574,10 @@ function Dashboard() {
                     <i class="bi bi-person-fill-add"></i> Manage User
                   </a>
                   
-                  <a href="#" onClick={togglesettings}><i class="bi bi-person-fill-add"></i> Access Settings</a>
+                  <a href="#" onClick={togglesettings}><i class="bi bi-person-fill-add"></i> Access Settings</a>*/}
                  
-                
+                  <a href="#" onClick={togglecreateuser}> <i class="bi bi-person-fill-add"></i> Add User</a>
+                  <a href="#" onClick={togglenewtables}> <i class="bi bi-person-fill-add"></i> Table</a>
                   <a href="#"  onClick={toggleUserUploads}>
                   <i class="bi bi-file-earmark-arrow-up-fill"></i> Uploads
                   </a>
@@ -633,8 +677,8 @@ function Dashboard() {
   </div>
   
   
-                <div className="tabletwo rounded w-auto">
-                  <h3>User Data Table</h3>
+                <div className="tabletwo w-auto">
+                 
                   <button
                     className="previous"
                     onClick={() => setCurrentPage(currentPage - 1)}
@@ -656,9 +700,9 @@ function Dashboard() {
                   <div className="col">
                     {getItemsForCurrentPage().length > 0 ? (
                       
-                      <table className="table table-hover table-sm">
+                      <table>
                         <thead>
-                          <tr className='table-dark'>
+                          <tr>
                             <th scope="col">Client ID</th>
                             <th scope="col">Client Email</th>
                             <th scope="col">Carrier Name</th>
@@ -673,7 +717,7 @@ function Dashboard() {
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
-                        <tbody className='table-group-divider'>
+                        <tbody>
                           {getItemsForCurrentPage().map((user, index) => (
                             <tr key={index}>
                               <td>{user.clientId}</td>
@@ -848,67 +892,7 @@ function Dashboard() {
                  <div className="profilecard">
                   <hr/>
                 
-                  <div class="pcard-wrapper">
-      
-      <div class="pcard">
-        
-        <div class="pcard-image">
-        <img src="https://img.freepik.com/premium-photo/portrait-smile-man-with-positive-confidence-carefree-against-grey-studio-background-face-male-person-human-with-cheerful-attitude-freedom-model-with-joy-canada-relax_590464-177008.jpg?size=626&ext=jpg&ga=GA1.1.1910600735.1701967946&semt=ais" alt="profile one" />
-        </div>
-
-     
-
-      <div class="details">
-        <h2>John Smith
-          <br/>
-          <span class="job-title" style={{color:"blue"}}>john@gmail.com</span><br/>
-          <span class="job-title">8186857433</span><br/>
-          <span class="job-title">Hyderabad</span>
-        </h2>
-        
-      </div>
-    </div>
-  </div>
-      <div class="pcard-wrapperr">
-        
-      <div class="pcard">
-        
-        <div class="pcard-image">
-        <img src="https://img.freepik.com/free-photo/portrait-young-beautiful-woman-with-smoky-eyes-makeup-pretty-young-adult-girl-posing-studio-closeup-attractive-female-face_186202-4439.jpg?size=626&ext=jpg&ga=GA1.1.1910600735.1701967946&semt=ais" alt="profile one"/>
-        </div>
-
-     
-
-      <div class="details">
-        <h2>John Smith
-          <br/>
-          <span class="job-title" style={{color:"blue"}}>john@gmail.com</span><br/>
-          <span class="job-title">8186857433</span><br/>
-          <span class="job-title">Hyderabad</span>
-        </h2>
-      </div>
-    </div>
-    </div>
-    <div class="pcard-wrapperrr">
-        
-      <div class="pcard">
-        
-        <div class="pcard-image">
-          <img src="https://img.freepik.com/premium-photo/man-with-blue-shirt-that-says-i-m-dentist_574881-94.jpg?size=626&ext=jpg&ga=GA1.1.1910600735.1701967946&semt=ais" alt="profile one"/>
-        </div>
-
-     
-
-      <div class="details">
-        <h2>John Smith
-          <br/>
-          <span class="job-title" style={{color:"blue"}}>john@gmail.com</span><br/>
-          <span class="job-title">8186857433</span><br/>
-          <span class="job-title">Hyderabad</span>
-        </h2>
-      </div>
-    </div>
-    </div>
+                  
     </div>      
                       
                       <div className="card ">
@@ -1062,9 +1046,7 @@ function Dashboard() {
                       Submit
                     </button>
                   </div>
-                </div>
-
-                {submittedMatrix.length > 0 && (
+                  {submittedMatrix.length > 0 && (
                   <div className="submitted-table">
                     <h4>Submitted Matrix Table</h4>
                     <table className="table table-bordered">
@@ -1089,6 +1071,9 @@ function Dashboard() {
                     </table>
                   </div>
                 )}
+                </div>
+
+                
               </>
             )}
             
@@ -1144,6 +1129,19 @@ function Dashboard() {
           {Showsettings &&(
             <Access/>
           )}
+        {Showcreatenewuser &&(
+            <Createnewuser/>
+          )}
+         <div>
+         {Shownewtables && (
+            <>
+              <Signup />
+              <CarrierDetails />
+              <Mapping />
+              <UserMapping />
+            </>
+          )}
+         </div>
 
         
       </div>

@@ -1,0 +1,31 @@
+
+.userclientmapping{
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #7738f6;
+    margin-top: 4%;
+    margin-left: 250px;
+    width: 210%;
+    margin-right:1%;
+    margin-bottom: 4%;
+   border: 1px solid grey;
+}
+.userclientmapping h2{
+    color: #7738f6;
+    text-align: center;
+}
+.userclientmapping input{
+margin-top: 1%;
+}
+.userclientmapping select{
+    margin-top: 1%;
+    }
+.userclientmapping label{
+margin-top: 1%;
+}
+.uselectedcl{
+    margin-left: 250px;
+}
+.uselectedca{
+    margin-left: 250px;
+}
