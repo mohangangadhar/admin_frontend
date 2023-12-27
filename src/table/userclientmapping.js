@@ -1,7 +1,7 @@
 // mapping.js
 
 import React, { useState, useEffect } from 'react';
-import './userclientmapping.css'
+import './userclientmapping.css';
 import { API_BASE_URL } from '../configure.js';
 
 const UserMapping = () => {
@@ -85,7 +85,7 @@ const UserMapping = () => {
 
   return (
     <div className='userclientmapping'>
-      <h2>User - Client Mapping</h2>
+      <h2>user client mapping</h2>
       <label htmlFor="clientSelect">Select Client:</label>
       <select className='form-control' id="clientSelect" value={selectedClient} onChange={handleClientChange}>
         <option value="">Select a client</option>
@@ -116,7 +116,19 @@ const UserMapping = () => {
       <button onClick={handleSaveMapping} className='createuser'>Save Mapping</button>
       </div>
 
-      
+      {selectedClient && (
+        <div className='uselectedcl'>
+          <h2>Selected Client: {selectedClient}</h2>
+          <h2>Selected Client ID: {selectedClientId}</h2>
+        </div>
+      )}
+
+      {selectedEmail && (
+        <div className='uselectedca'>
+          <h2>Selected email: {selectedEmail}</h2>
+          <h2>Selected email ID: {selectedEmailId}</h2>
+        </div>
+      )}
     </div>
   );
 };

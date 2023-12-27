@@ -21,9 +21,9 @@ function App() {
   };
   firebase.initializeApp(firebaseConfig);
   
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
-  const handleLoginSuccess = (email) => {
+  const handleLoginSuccess = (emaill) => {
     setAuthenticated(true);
   };
 

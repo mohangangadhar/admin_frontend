@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/compat/app'; // Use 'compat/app' to handle the breaking changes in version 9
 import 'firebase/compat/auth'; // Import the specific Firebase modules you need
-import './signup.css'
+import './signup.css';
 import { API_BASE_URL } from '../configure.js';
 
 const Signup = () => {
@@ -37,11 +37,6 @@ const Signup = () => {
             console.log('MongoDB response:', data);
 
             alert('Signup successful!');
-
-
-            setEmail('');
-            setPassword('');
-            setRole('');
         } catch (error) {
             alert(`Signup failed: ${error.message}`);
         }
@@ -50,7 +45,7 @@ const Signup = () => {
     return (
         <div>
             <div className='tablesignup'>
-            <h1>User Details</h1>
+            <h1>Signup</h1>
             <form>
                 <label>Email:</label>
                 <input type="email" className="form-control" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />

@@ -1,4 +1,4 @@
-.clientcarriermapping{
+.fetch1{
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 1rem;
@@ -7,8 +7,12 @@
     padding: 2rem;
     border-radius: 5px;
 }
-.clientcarriermapping h2{
+.fetch1 h2{
     color: #7738f6;
 }
-
-
+.fetch1 label{
+    margin-top: 1%;
+}
+.fetch1 select{
+    margin-top: 1%;
+}

@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/compat/app'; // Use 'compat/app' to handle the breaking changes in version 9
 import 'firebase/compat/auth'; // Import the specific Firebase modules you need
-import './createnewuser.css'
+import './createnewuser.css';
+import { API_BASE_URL } from './configure.js';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const Signup = () => {
             });
 
             // Save user data to MongoDB Atlas
-            const response = await fetch('http://localhost:5000/firebase', {
+            const response = await fetch(`${ API_BASE_URL }/firebase`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,9 +43,9 @@ const Signup = () => {
     };
 
     return (
-        <div className='createnewuser'>
+        <div >
+            <form className='createnewuser'>
             <h1>Create new user</h1>
-            <form>
                 <label>Email:</label>
                 <input type="email" className='form-control' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 

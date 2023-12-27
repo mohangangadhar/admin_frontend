@@ -1,6 +1,6 @@
 // CarrierDetails.js
 import React, { useState } from 'react';
-import './carrierdetails.css';
+import './carrierdetails.css'
 import { API_BASE_URL } from '../configure.js';
 
 const CarrierDetails = () => {
