@@ -7,6 +7,7 @@ import Dashboard from './dashboard1';
 import Loginpage from './loginpage';
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/auth';
+import Nav from './table/nav.js'
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
   };
   firebase.initializeApp(firebaseConfig);
   
-  const [authenticated, setAuthenticated] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
 
   const handleLoginSuccess = (emaill) => {
     setAuthenticated(true);
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login onLoginSuccess={handleLoginSuccess} />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/nav" element={<Nav />} />
         <Route
           path="/dashboard/:emaill"
           element={<PrivateRoute element={<Dashboard />} />}

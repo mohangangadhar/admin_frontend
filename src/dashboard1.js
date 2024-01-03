@@ -49,7 +49,7 @@ function App() {
   const [destination, setDestination] = useState([]);
   const [chargeCode, setChargeCode] = useState([]);
   const [isDate, setIsDate] = useState([]);
-  const [profileData, setProfileData] = useState(null);
+  const [profileData, setProfileData] = useState({ uid: null });
 
   const [parameter, setParameter] = useState("");
   const [description, setDescription] = useState("");
@@ -67,6 +67,13 @@ function App() {
   const [Showfetcheddata, setShowfetcheddata] = useState("");
 
   const [matrix, setMatrix] = useState(createEmptyMatrix(0, 0));
+
+  //const emailnav = profileData && profileData.uid;
+  //const emailnav = 'qSvgJ3eSM4RaaGIuhPT1RKmV2C63';
+  const [emailnav, setEmailnav] = useState('');
+  const [selectedEmailUid, setSelectedEmailUid] = useState(emailnav);
+  const [clientIdsList, setClientIdsList] = useState([]);
+  const [selectedClientId, setSelectedClientId] = useState('');
 
   // Function to create an empty matrix with specified rows and columns
   function createEmptyMatrix(parameters, zones) {
@@ -176,6 +183,35 @@ function App() {
     fetchUsers();
   }, []);
 
+
+
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/getDataByEmailUid?email_uid=${emailnav}`);
+          const data = await response.json();
+  
+          console.log('Data by email_uid:', data);
+  
+          // Extract client_ids from data
+          const clientIds = data.map((item) => item.client_id);
+  
+          // Use Set to remove duplicate values
+          const uniqueClientIds = Array.from(new Set(clientIds));
+  
+          setClientIdsList(uniqueClientIds);
+        } catch (error) {
+          console.error('Error fetching data by email_uid:', error);
+        }
+      };
+  
+      fetchData();
+    }, [emailnav]);
+  
+    const handleClientIdChange = (event) => {
+      setSelectedClientId(event.target.value);
+    };
 
 
   const toggleUserProfile = () => {
@@ -351,9 +387,17 @@ function App() {
       console.error('Error fetching profile data:', error);
     }
   };
-
-  fetchProfileData();
+   fetchProfileData();
 }, [emaill]);
+
+useEffect(() => {
+  // Check if profileData is not null before updating emailnav
+  if (profileData && profileData.uid !== null) {
+    console.log('Updating emailnav with:', profileData.uid);
+    setEmailnav(profileData.uid);
+  }
+}, [profileData.uid]);
+
 
 
   const handleDestinationChange = (index, value) => {
@@ -390,6 +434,40 @@ function App() {
 
     try {
       const response = await fetch(`${API_BASE_URL}/upload/${email}`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("User data and PDF file link saved successfully!");
+        fetchUserDetails(email);
+        fetchUserTableData(email);
+      } else {
+        alert("An error occurred while saving the data.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while saving the data.");
+    }
+  };
+
+
+  const handleSubmitmap = async () => {
+    const formData = new FormData();
+    formData.append("clientId", clientId);
+    formData.append("carrier", carrier);
+    formData.append("name", name);
+    formData.append("csvFile", csvFile);
+    formData.append("source", source);
+    const uploadDateTime = new Date();
+    formData.append("uploadDateTime", uploadDateTime.toISOString());
+    formData.append("sourceCol", sourceCol);
+    formData.append("destination", destination.join(","));
+    formData.append("chargeCode", chargeCode.join(","));
+    formData.append("isDate", isDate.join(","));
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/uploadmap/${email}`, {
         method: "POST",
         body: formData,
       });
@@ -701,24 +779,45 @@ function App() {
           <div className="cards">
             <div className="card-single">
             <h4>Upload Freight Data</h4>
+
             <div className="uploadfieldinside">
-              <input type="text" className="form-control" placeholder="Give Client ID" value={profileData.uid} readOnly />
-              <select className="form-control" placeholder="Carrier Name" >
+            
+            <select
+                       className="form-control"
+                        id="clientIdSelect"
+                      value={selectedClientId}
+                      onChange={handleClientIdChange}
+                      value={clientId} onChange={(e) => setClientId(e.target.value)}
+            >
+            <option key="" value="">
+                Select a Client ID
+            </option>
+               {clientIdsList.map((clientId, index) => (
+            <option key={index} value={clientId}>
+                  {clientId}
+           </option>
+        ))}
+            </select>
+
+
+              <select className="form-control" placeholder="Carrier Name" value={carrier}
+              onChange={(e) => setCarrier(e.target.value)} >
                               <option>choose Carrier</option>
                               <option>ShipRock</option>
                               <option>Blue</option>
               </select>
-              <select className="form-control" placeholder="File Type" >
+              <select className="form-control" placeholder="File Type" value={name}
+                    onChange={(e) => setName(e.target.value)}>
                               <option>choose File Type</option>
                               <option>Choose invoice file</option>
                               <option>Choose manifest file</option>
               </select>
             </div>
             <div className="insidefile">
-              <input type="file" className="form-control" />
+              <input type="file" className="form-control" onChange={handleFileChange}/>
             </div>
             <div className="createbutton">
-              <button className="create" > Submit </button>
+              <button className="create" onClick={handleSubmit} > Submit </button>
             </div>
             </div>
           </div>
@@ -752,9 +851,7 @@ function App() {
                     <th scope="col">Client Email</th>
                     <th scope="col">Carrier Name</th>
                     <th scope="col">File Type</th>
-                    <th scope="col">Source</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Charge</th>
+                 
                     <th scope="col">date</th>
 
                     <th scope="col">Uploaded Time</th>
@@ -769,9 +866,7 @@ function App() {
                       <td>{user.email}</td>
                       <td>{user.carrier}</td>
                       <td>{user.name}</td>
-                      <td>{user.source}</td>
-                      <td>{user.destination}</td>
-                      <td>{user.chargeCode}</td>
+                      
                       <td>{user.isDate}</td>
 
                       <td>{user.uploadDateTime}</td>
@@ -900,7 +995,7 @@ function App() {
                     )}
                   </div>
                   <div className="createbutton">
-                  <button className="create" onClick={handleSubmit}>
+                  <button className="create" onClick={handleSubmitmap}>
                     Submit
                   </button>
                   </div>
